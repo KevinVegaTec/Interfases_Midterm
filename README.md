@@ -1,2 +1,4 @@
-# Interfases_Midterm
-Midterm Homework for Interfaces modules of TE3003B
+# Interfases Midterm Homework
+Midterm Homework for Interfaces module of TE3003B
+
+Kevin Vega Rodriguez - A01612430
