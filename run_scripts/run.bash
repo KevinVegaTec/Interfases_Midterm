@@ -24,7 +24,9 @@ WEB_CAM_ARGS=" --device=/dev/video0
 
 
 VOLUMES_ARGS="-v /tmp/.X11-unix:/tmp/.X11-unix
--v /dev/shm:/dev/shm"
+-v /dev/shm:/dev/shm
+-v /catkin_ws/src:/catkin_ws/src
+-v /library:/library"
 
 DOCKER_COMMAND="docker run"
 

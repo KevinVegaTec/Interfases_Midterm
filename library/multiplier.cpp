@@ -1,7 +1,7 @@
 #include "multiplier.h"
 
 
-float multiplier(float value) {
+float multiplyBy100(float value) {
     return value * 100.0f;
 }
 

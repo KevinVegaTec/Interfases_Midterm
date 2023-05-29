@@ -1,8 +1,9 @@
 FROM ros:noetic
 
+LABEL maintainer="Kevin Vega <A01612430@tec.mx>"
+
 # Expose ports
 EXPOSE 6080 80 22 4800
-
 
 RUN apt-get update -qq && \
     apt-get install -y \
@@ -18,12 +19,20 @@ RUN apt-get update -qq && \
 
 # Set up volumes
 VOLUME /dev/shm
-# VOLUME <directorio_o_nombre_de_tu_volumen>:/home/robotics/data
-RUN mkdir /catkin_ws
-COPY catkin_ws/src catkin_ws/src
-# Set the working directory
-WORKDIR /catkin_ws
+
 COPY library/ library/
+
+# Build the library
+WORKDIR /library
+RUN g++ -c -fPIC multiplier.cpp -o multiplier.o
+RUN g++ -shared -o libmultiplier.so multiplier.o
+RUN cp libmultiplier.so /usr/lib
+RUN chmod 0755 /usr/lib/libmultiplier.so
+
+WORKDIR /
+COPY catkin_ws/src catkin_ws/src
+WORKDIR /catkin_ws
+# Set the working directory
 
 
 RUN /bin/bash -c '. /opt/ros/noetic/setup.bash;catkin_make'

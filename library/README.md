@@ -25,18 +25,12 @@ To add it so i can use it in my system and give rights to use it
 In order to use the library with ROS you need to add it to the CMakeLists.txt file
 
 ```bash
-    add_library(multiplier SHARED src/multiplier.cpp)
-    target_include_directories(multiplier PUBLIC include)
-    target_link_libraries(multiplier ${catkin_LIBRARIES})
-```
-```bash
 target_link_libraries(hundred_pub_node
   ${catkin_LIBRARIES}
   multiplier
 )
 
 include_directories(
-# include
   ${catkin_INCLUDE_DIRS}
   ../../library
 )

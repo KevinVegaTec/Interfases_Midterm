@@ -4,6 +4,6 @@
 #include <stdio.h>
 #include <iostream>
 
-float multiplier(float value);
+float multiplyBy100(float value);
 
 #endif
