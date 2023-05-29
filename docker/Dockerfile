@@ -20,9 +20,11 @@ RUN apt-get update -qq && \
 VOLUME /dev/shm
 # VOLUME <directorio_o_nombre_de_tu_volumen>:/home/robotics/data
 RUN mkdir /catkin_ws
-COPY catkin_ws/ catkin_ws/
+COPY catkin_ws/src catkin_ws/src
 # Set the working directory
 WORKDIR /catkin_ws
+COPY library/ library/
+
 
 RUN /bin/bash -c '. /opt/ros/noetic/setup.bash;catkin_make'
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
